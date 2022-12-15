@@ -1,6 +1,8 @@
+import { Content } from "./content";
+
 export interface INotification {
     recipientId: string;
-    content : string;
+    content : Content;
     category: string;
     readAt?: Date | null;
     createdAt: Date;
@@ -29,14 +31,11 @@ export class Notifications {
         this.props.category = category;
     }
     
-    public set content(content : string) {
-        if(content.length < 6) {
-            throw new Error("Content must be at least 6 character long");
-        }
+    public set content(content : Content) {
         this.props.content = content;
     }
     
-    public get content():string {
+    public get content():Content {
         return this.props.content;
     }
     
