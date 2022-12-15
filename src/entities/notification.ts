@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+import { Replace } from "src/helpers/Replace";
 import { Content } from "./content";
 
 export interface INotification {
@@ -12,8 +13,11 @@ export interface INotification {
 export class Notifications {
   private props: INotification;
 
-  constructor(props: INotification) {
-    this.props = props;
+  constructor(props: Replace<INotification , {createdAt?: Date}>) {
+    this.props = {
+      ...props,
+      createdAt:props.createdAt ?? new Date(),
+    }
   }
 
   public get recipientId(): string {
