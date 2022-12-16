@@ -1,17 +1,12 @@
 /* eslint-disable prettier/prettier */
+import { InMemoryNotificationsRepository } from "../../../test/repositories/in-memory-notifications-repository";
 import { Notifications } from "./../entities/notification";
 import { SendNotification } from "./send-notification";
 
-const notifications: Notifications[] = [];
-
-const notificationsRepository = {
-   async create(notification:Notifications){
-        notifications.push(notification)
-    }
-}
 
 describe('Send-Notification', () => {
     it('it should be able to send a notification', async() => {
+        const notificationsRepository = new InMemoryNotificationsRepository();
         const sendNotification = new SendNotification(notificationsRepository);
         
          await sendNotification.execute({
@@ -21,7 +16,7 @@ describe('Send-Notification', () => {
             
         })
         
-        expect(notifications).toHaveLength(1);
+        expect(notificationsRepository.notifications).toHaveLength(1);
     })
 
 })
