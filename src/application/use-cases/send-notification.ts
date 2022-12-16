@@ -10,27 +10,27 @@ interface SendNotificationRequest {
 }
 
 interface SendNotificationResponse {
-    notification: Notifications;
+  notification: Notifications;
 }
 
-
 export class SendNotification {
-        
-       constructor(private notificationsRepository:NotificationsRepository) {}
-        
-    async execute(request: SendNotificationRequest): Promise<SendNotificationResponse>{
-        const { recipientId, content, category } = request;
-        
-        const notification =  new Notifications({
-            recipientId,
-            content:new Content(content),
-            category,
-        })
-        
-        await this.notificationsRepository.create(notification);
-        
-        return { 
-            notification
-        }
-    }
+  constructor(private notificationsRepository: NotificationsRepository) {}
+
+  async execute(
+    request: SendNotificationRequest
+  ): Promise<SendNotificationResponse> {
+    const { recipientId, content, category } = request;
+
+    const notification = new Notifications({
+      recipientId,
+      content: new Content(content),
+      category,
+    });
+
+    await this.notificationsRepository.create(notification);
+
+    return {
+      notification,
+    };
+  }
 }
