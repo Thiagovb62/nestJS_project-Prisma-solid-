@@ -25,4 +25,15 @@ describe('Cancel-Notification', () => {
         expect(notificationsRepository.notifications[0].cancelAt).toEqual(expect.any(Date));
     });
 
+    it('it should not be able to cancel a notification that does not exist', async () => {
+        const notificationsRepository = new InMemoryNotificationsRepository();
+        const cancelNotifications = new CancelNotification(notificationsRepository);
+        
+        await expect(
+            cancelNotifications.execute({
+                notificationId: '123',
+            }),
+        ).rejects.toThrowError('Notification not found');
+    });
+
 });
