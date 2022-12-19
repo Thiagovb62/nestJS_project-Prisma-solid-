@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from "@nestjs/common";
-import { Notifications } from "src/application/entities/notification";
-import { NotificationsRepository } from "src/application/repositories/notifications-Repository";
+import { Notifications } from "@application/entities/notification";
+import { NotificationsRepository } from "@application/repositories/notifications-Repository";
 import {PrismaService} from "../prisma.service"
 
 @Injectable()

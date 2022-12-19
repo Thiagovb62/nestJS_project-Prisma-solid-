@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+import { NotificationViewModel } from "./../view-models/notification-view-model";
 import { PrismaService } from "../../database/prisma/prisma.service";
 import { Body, Controller, Post } from "@nestjs/common";
 import { createNotificationBody } from "../../dtos/create-notification-body";
@@ -19,6 +20,8 @@ export class NotificationsController {
       category,
     })
     
-    return { notification };
+    return {
+      notification:NotificationViewModel.toHTTP(notification),
+    }
   }
 }
