@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
+import { Injectable } from '@nestjs/common';
 import { NotificationNotFound } from "./errors/notification-not-found";
-import { Content } from "../entities/content";
-import { Notifications } from "../entities/notification";
 import { NotificationsRepository } from "../repositories/notifications-Repository";
 
 interface CancelNotificationRequest {
@@ -10,6 +9,7 @@ interface CancelNotificationRequest {
 
 type CancelNotificationResponse = void;
 
+@Injectable()
 export class CancelNotification {
   constructor(private notificationsRepository: NotificationsRepository) { }
 

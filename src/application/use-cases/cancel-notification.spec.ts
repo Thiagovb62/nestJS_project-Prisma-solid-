@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Notifications } from "@application/entities/notification";
-import { Content } from "./../../entities/content";
-import { CancelNotification } from './../cancel-notification';
+import { Content } from "../entities/content";
+import { CancelNotification } from './cancel-notification';
 import { InMemoryNotificationsRepository } from '@test/repositories/in-memory-notifications-repository';
 
 
